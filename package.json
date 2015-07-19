@@ -1,0 +1,24 @@
+{
+  "name": "edtfy",
+  "version": "0.0.1-beta.2",
+  "description": "",
+  "main": "dist/edtfy.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Nicolas Barbotte <nicolas@barbotte.net>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^10.2.1",
+    "browserify-derequire": "^0.9.4",
+    "chai": "^2.3.0",
+    "gulp": "^3.8.11",
+    "gulp-mocha": "^2.0.1",
+    "gulp-peg": "^0.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
+}

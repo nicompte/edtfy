@@ -1,0 +1,20 @@
+{
+  "name": "edtfy",
+  "version": "0.0.1-beta.1",
+  "authors": [
+    "Nicolas Barbotte <nicolas@barbotte.net>"
+  ],
+  "moduleType": [
+    "es6",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
