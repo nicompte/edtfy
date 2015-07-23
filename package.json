@@ -1,7 +1,13 @@
 {
   "name": "edtfy",
-  "version": "0.0.1-beta.2",
-  "description": "",
+  "version": "0.0.1-beta.3",
+  "description": "Javascript date parser, transforms user input into the edtf format.",
+  "homepage": "http://edtfy.barbotte.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicompte/edtfy"
+  },
+  "keywords": ["edtf", "date", "parser"],
   "main": "dist/edtfy.js",
   "scripts": {
     "test": "gulp test"
