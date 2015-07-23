@@ -1,8 +1,7 @@
 var gulp = require('gulp');
 
 gulp.task('peg', function() {
-  var peg = require('gulp-peg'),
-    umd = require('gulp-umd');
+  var peg = require('gulp-peg');
   gulp.src('edtfy.pegjs')
     .pipe(peg())
     .pipe(gulp.dest('tmp'));
