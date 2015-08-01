@@ -10,7 +10,7 @@ var fr = {
   ],
   seasons: ['printemps', 'ete', 'automne', 'hiver'],
   century: 'siecle',
-  format: 'dmy',
+  format: ['dmy'],
   around: 'vers|environ|env|autour de',
   between1: 'entre|du|de',
   between2: 'au|a',
@@ -29,7 +29,7 @@ var en = {
   ],
   seasons: ['spring', 'summer', 'autumn|fall', 'winter'],
   century: 'century',
-  format: 'mdy',
+  format: ['mdy', 'dmy'],
   around: 'around|about|abt|close to',
   between1: 'between|from',
   between2: 'to',
@@ -66,7 +66,7 @@ module.exports = {
   parse: function(string, options) {
     options = options || {};
     options.locale = options.locale || 'en';
-      var localeData = options.locale === 'en' ? en : fr;
+    var localeData = options.locale === 'en' ? en : fr;
     string = string.trim()
       .toLowerCase()
       .replace(/ +/g, ' ')
@@ -86,7 +86,18 @@ module.exports = {
       string = i18n(string, localeData).trim()
       .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
       .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
-    var result = parser.parse(string, {format: localeData.format});
+    var result;
+    localeData.format.forEach(function(format, i) {
+      try {
+        if (!result) {
+          result = parser.parse(string, {format: format});
+        }
+      } catch (e) {
+        if (i === localeData.format.length - 1) {
+          throw e;
+        }
+      }
+    });
     return result;
   }
 };

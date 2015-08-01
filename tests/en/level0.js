@@ -87,7 +87,6 @@ describe('EN - Level 0', function () {
     it('should not parse invalid dates', function() {
       (function(){parser.parse('01/32/1988')}).should.throw(Error);
       (function(){parser.parse('01/0/1988')}).should.throw(Error);
-      (function(){parser.parse('13/01/1988')}).should.throw(Error);
       (function(){parser.parse('02/30/1988')}).should.throw(Error);
       (function(){parser.parse('04/31/1988')}).should.throw(Error);
       (function(){parser.parse('06/31/1988')}).should.throw(Error);
