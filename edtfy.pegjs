@@ -158,7 +158,11 @@ year = s:'-'? y:yeardigits {
   }
   return y
 }
-yeardigits = $(d:(DIGIT+ / !'/') u:(UNKNOWN* / !'/'))
+yeardigits
+ = d:(DIGIT+ / !'/') u:(UNKNOWN* / !'/') {
+ var a = d || [];
+ return a.concat(u).join('')
+}
 
 lettermonth = 'M' m:$(DIGIT DIGIT) { return m }
 
@@ -174,19 +178,21 @@ century
 season_year = s:season ' '+ y:year { return y + '-' + s }
 
 month
-  = $(UNKNOWN_MONTH UNKNOWN / UNKNOWN_MONTH DIGIT)
-  / d:DIGIT {return '0' + d}
-  / 'u' { return 'uu' }
-  / 'x' { return 'xx' }
+  = (a:UNKNOWN_MONTH b:UNKNOWN { return a + b;} / a:UNKNOWN_MONTH b:DIGIT { return a + b; })
+  / unknown_day_month
 day
-  = $(UNKNOWN_DAY UNKNOWN / UNKNOWN_DAY DIGIT)
-  / d:DIGIT {return '0' + d}
+  = (a:UNKNOWN_DAY b:UNKNOWN { return a + b;} / a:UNKNOWN_DAY b:DIGIT { return a + b; })
+  / unknown_day_month
+
+unknown_day_month 
+  = d:DIGIT {return '0' + d}
   / 'u' { return 'uu' }
+  / '*' { return 'uu' }
   / 'x' { return 'xx' }
 
 DIGIT = [0-9]
 CHAR = [a-z]
-UNKNOWN = 'u' / 'x'
+UNKNOWN = 'u' / 'x' / '*' { return 'u' }
 UNKNOWN_MONTH = UNKNOWN / [0-1]
 UNKNOWN_DAY = UNKNOWN / [0-3]
 UK = 'U' { return 'unknown' }

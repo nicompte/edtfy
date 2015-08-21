@@ -80,16 +80,24 @@ describe('EN - Level 1', function () {
     it('should parse year unspecified', function() {
       parser.parse('198u').should.equal('198u');
       parser.parse('19uu').should.equal('19uu');
+      parser.parse('198*').should.equal('198u');
+      parser.parse('19**').should.equal('19uu');
     });
     it('should parse month unspecified', function() {
       parser.parse('1u/1988').should.equal('1988-1u');
       parser.parse('uu/1988').should.equal('1988-uu');
       parser.parse('u/1988').should.equal('1988-uu');
+      parser.parse('1*/1988').should.equal('1988-1u');
+      parser.parse('**/1988').should.equal('1988-uu');
+      parser.parse('*/1988').should.equal('1988-uu');
     });
     it('should parse day unspecified', function() {
       parser.parse('01/1u/1988').should.equal('1988-01-1u');
       parser.parse('1/1u/1988').should.equal('1988-01-1u');
       parser.parse('01/uu/1988').should.equal('1988-01-uu');
+      parser.parse('01/1*/1988').should.equal('1988-01-1u');
+      parser.parse('1/1*/1988').should.equal('1988-01-1u');
+      parser.parse('01/**/1988').should.equal('1988-01-uu');
     });
   });
   describe('L1 extended interval: the parser', function() {
