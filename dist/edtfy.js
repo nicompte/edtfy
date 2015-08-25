@@ -32,7 +32,7 @@ var en = {
   century: 'century',
   format: ['mdy', 'dmy'],
   around: 'around|about|abt|close to',
-  between1: 'between|from',
+  between1: 'between|bet|from',
   between2: 'to',
   and: 'and',
   or: 'or',

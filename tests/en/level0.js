@@ -98,12 +98,15 @@ describe('EN - Level 0', function () {
     // Between ... and ...
     it('should parse \'between YYYY and YYYY\' intervals', function () {
       parser.parse('between 1987 and 1988').should.equal('1987/1988');
+      parser.parse('bet 1987 and 1988').should.equal('1987/1988');
     });
     it('should parse \'between (the) D(D)/M(M)/YYYY and (the) D(D)/M(M)/YYYY\' intervals', function () {
       parser.parse('between 03/28/1988 and 03/30/1988').should.equal('1988-03-28/1988-03-30');
       parser.parse('between 03/1/1988 and 03/3/1988').should.equal('1988-03-01/1988-03-03');
       parser.parse('between the 03/28/1988 and the 03/30/1988').should.equal('1988-03-28/1988-03-30');
       parser.parse('between the 03/1/1988 and the 03/3/1988').should.equal('1988-03-01/1988-03-03');
+      parser.parse('bet the 03/28/1988 and the 03/30/1988').should.equal('1988-03-28/1988-03-30');
+      parser.parse('bet the 03/1/1988 and the 03/3/1988').should.equal('1988-03-01/1988-03-03');
     });
     // De ... to ...
     it('should parse \'from YYYY to YYYY\' intervals', function () {
