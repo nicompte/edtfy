@@ -2186,6 +2186,10 @@ module.exports = (function() {
       function validateDate (date) {
         date = date.replace(/[~\?y]/g, '').replace(/^-/, '');
         var parts = date.split('-'), month, day;
+        var year = toInt(parts[0]);
+        if(!toInt(year) && year === 0) {
+          throw new Error('Invalid year');
+        }
         // yyyy-mm-dd
         if (parts.length == 3) {
           month = toInt(parts[1]);

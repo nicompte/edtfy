@@ -96,6 +96,7 @@ describe('FR - Level 0', function () {
       (function(){parser.parse('31/06/1988')}).should.throw(Error);
       (function(){parser.parse('31/09/1988')}).should.throw(Error);
       (function(){parser.parse('31/11/1988')}).should.throw(Error);
+      (function(){parser.parse('31/11/0')}).should.throw(Error);
     });
   });
   describe('interval: the parser', function() {

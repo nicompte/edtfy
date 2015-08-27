@@ -92,6 +92,7 @@ describe('EN - Level 0', function () {
       (function(){parser.parse('06/31/1988')}).should.throw(Error);
       (function(){parser.parse('09/31/1988')}).should.throw(Error);
       (function(){parser.parse('11/31/1988')}).should.throw(Error);
+      (function(){parser.parse('11/31/0')}).should.throw(Error);
     });
   });
   describe('interval: the parser', function() {

@@ -1,6 +1,6 @@
 {
   "name": "edtfy",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "description": "Javascript date parser, transforms user input into the edtf format.",
   "homepage": "http://edtfy.barbotte.net",
   "repository": {
