@@ -1,43 +1,11 @@
+(function() {
+
+var locale = 'en';
 
 var parser = require('./tmp/edtfy.js');
 
-var fr = {
-  days: 'lundi|lun|mardi|mar|mercredi|mer|jeudi|jeu|vendredi|ven|samedi|sam|dimanche|dim',
-  months: [
-    'janvier|jan', 'fevrier|fev', 'mars|mar', 'avril|avr',
-    'mai', 'juin|jui', 'juillet|juil', 'aout|aou',
-    'septembre|sep', 'octobre|oct', 'novembre|nov', 'decembre|dec'
-  ],
-  seasons: ['printemps', 'ete', 'automne', 'hiver'],
-  century: 'siecle',
-  format: ['dmy'],
-  around: 'vers|environ|env|autour de',
-  between1: 'entre|du|de',
-  between2: 'au|a',
-  and: 'et',
-  or: 'ou',
-  unknown: 'inconnue?',
-  open: 'en cours'
-};
-
-var en = {
-  days: 'monday|mon|tuesday|tue|wednesday|wed|thursday|thu|friday|fri|saturday|sat|sunday|sun',
-  months: [
-    'january|jan', 'february|feb', 'march|mar', 'april|apr',
-    'may', 'june|jun', 'july|jul', 'august|aug',
-    'september|sep', 'october|oct', 'november|nov', 'december|dec'
-  ],
-  seasons: ['spring', 'summer', 'autumn|fall', 'winter'],
-  century: 'century',
-  format: ['mdy', 'dmy'],
-  around: 'around|about|abt|close to',
-  between1: 'between|bet|from',
-  between2: 'to',
-  and: 'and',
-  or: 'or',
-  unknown: 'unknown|ukn',
-  open: 'open'
-};
+var fr = require('./locales/fr');
+var en = require('./locales/en');
 
 var i18n = function(string, localeData) {
   localeData.months.forEach(function(month, i){
@@ -65,7 +33,7 @@ var i18n = function(string, localeData) {
 module.exports = {
   parse: function(string, options) {
     options = options || {};
-    options.locale = options.locale || 'en';
+    options.locale = options.locale || locale;
     var localeData = options.locale === 'en' ? en : fr;
     string = string.trim()
       .toLowerCase()
@@ -99,5 +67,14 @@ module.exports = {
       }
     });
     return result;
+  },
+  locale: function(newLocale) {
+    if (newLocale) {
+      locale = newLocale;
+    } else {
+      return locale;
+    }
   }
-};
+}
+
+})();

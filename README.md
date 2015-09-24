@@ -11,12 +11,18 @@ bower install edtfy #bower
 
 ## Usage
 
-edtfy provides a single `parse` function.
+### parse
 
 ```js
 edtfy = require('edtfy');
 edtfy.parse('29 mars 1988', options); // 1988-03-29
 ```
+
+### locale
+
+`edtfy.locale(locale)`: define the locale
+
+`edtfy.locale()`: retrieve the locale
 
 ## Compatibility
 
