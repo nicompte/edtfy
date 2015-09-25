@@ -2,7 +2,7 @@
 // Functions
 
   // Transform roman number to standard number
-  function deromanize (str) {
+  var deromanize = function(str) {
     str = str.toUpperCase();
     var  validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/,
     token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
@@ -22,7 +22,7 @@
     7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
   }
 
-  toInt = function (value) {
+  var toInt = function(value) {
     if(/^(\-|\+)?([0-9]+)$/.test(value)) return Number(value);
     return NaN;
   }
