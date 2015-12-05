@@ -15,7 +15,8 @@ bower install edtfy #bower
 
 ```js
 edtfy = require('edtfy');
-edtfy.parse('29 mars 1988', options); // 1988-03-29
+edtfy.locale('fr');
+edtfy('29 mars 1988'); // 1988-03-29
 ```
 
 ### locale
