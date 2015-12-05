@@ -31,50 +31,49 @@ var i18n = function(string, localeData) {
   return string;
 };
 
-module.exports = {
-  parse: function(string, options) {
-    options = options || {};
-    options.locale = options.locale || locale;
-    var localeData = options.locale === 'en' ? en : fr;
-    string = string.trim()
-      .toLowerCase()
-      .replace(/ +/g, ' ')
-      .replace(/[,.]/g, '')
-      .replace(/[àáâãäå]/g,"a")
-      .replace(/ç/g,"c")
-      .replace(/[èéêë]/g,"e")
-      .replace(/[ìíîï]/g,"i")
-      .replace(/[òóôõö]/g,"o")
-      .replace(/[ùúûü]/g,"u")
-      .replace(/[ýÿ]/g,"y")
-      .replace(/\ble\b/g, '').replace(/\ben\b\s*(\d)/g, '$1').replace(/\bl'\b/g, '').replace(/\bl'an\b/g, '')
-      .replace(/(\d+)\s?eme\b/g, '$1').replace(/(\d+)\s?er\b/g, '$1').replace(/(\d+)\s?e\b/g, '$1')
-      .replace(/\bthe\b/g, '').replace(/\bin\b/g, '')
-      .replace(/(\d+)\s?st\b/g, '$1').replace(/(\d+)\s?nd\b/g, '$1').replace(/(\d+)\s?rd\b/g, '$1').replace(/(\d+)\s?th\b/g, '$1')
-      .replace(/ +/g, ' ');
-      string = i18n(string, localeData).trim()
-      .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
-      .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
-    var result;
-    localeData.format.forEach(function(format, i) {
-      try {
-        if (!result) {
-          result = parser.parse(string, {format: format});
-        }
-      } catch (e) {
-        if (i === localeData.format.length - 1) {
-          throw e;
-        }
+module.exports = function(string, options) {
+  options = options || {};
+  options.locale = options.locale || locale;
+  var localeData = options.locale === 'en' ? en : fr;
+  string = string.trim()
+    .toLowerCase()
+    .replace(/ +/g, ' ')
+    .replace(/[,.]/g, '')
+    .replace(/[àáâãäå]/g,"a")
+    .replace(/ç/g,"c")
+    .replace(/[èéêë]/g,"e")
+    .replace(/[ìíîï]/g,"i")
+    .replace(/[òóôõö]/g,"o")
+    .replace(/[ùúûü]/g,"u")
+    .replace(/[ýÿ]/g,"y")
+    .replace(/\ble\b/g, '').replace(/\ben\b\s*(\d)/g, '$1').replace(/\bl'\b/g, '').replace(/\bl'an\b/g, '')
+    .replace(/(\d+)\s?eme\b/g, '$1').replace(/(\d+)\s?er\b/g, '$1').replace(/(\d+)\s?e\b/g, '$1')
+    .replace(/\bthe\b/g, '').replace(/\bin\b/g, '')
+    .replace(/(\d+)\s?st\b/g, '$1').replace(/(\d+)\s?nd\b/g, '$1').replace(/(\d+)\s?rd\b/g, '$1').replace(/(\d+)\s?th\b/g, '$1')
+    .replace(/ +/g, ' ');
+    string = i18n(string, localeData).trim()
+    .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
+    .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
+  var result;
+  localeData.format.forEach(function(format, i) {
+    try {
+      if (!result) {
+        result = parser.parse(string, {format: format});
       }
-    });
-    return result;
-  },
-  locale: function(newLocale) {
-    if (newLocale) {
-      locale = newLocale;
-    } else {
-      return locale;
+    } catch (e) {
+      if (i === localeData.format.length - 1) {
+        throw e;
+      }
     }
+  });
+  return result;
+}
+
+module.exports.locale = function(newLocale) {
+  if (newLocale) {
+    locale = newLocale;
+  } else {
+    return locale;
   }
 }
 

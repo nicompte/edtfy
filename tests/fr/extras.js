@@ -7,16 +7,16 @@ describe('FR - extras', function () {
   });
   describe('centuries: the parser', function() {
     it('should parse centuries with digits', function() {
-      edtfy.parse('19è siècle').should.equal('18xx');
-      // edtfy.parse('19è').should.equal('18xx');
-      edtfy.parse('18ème siècle').should.equal('17xx');
-      edtfy.parse('4 siecle').should.equal('3xx');
+      edtfy('19è siècle').should.equal('18xx');
+      // edtfy('19è').should.equal('18xx');
+      edtfy('18ème siècle').should.equal('17xx');
+      edtfy('4 siecle').should.equal('3xx');
     });
     it('should parse centuries with roman numbers', function() {
-      edtfy.parse('XIXè siècle').should.equal('18xx');
-      // edtfy.parse('XIXè').should.equal('18xx');
-      edtfy.parse('XVIIIème siècle').should.equal('17xx');
-      edtfy.parse('IV siecle').should.equal('3xx');
+      edtfy('XIXè siècle').should.equal('18xx');
+      // edtfy('XIXè').should.equal('18xx');
+      edtfy('XVIIIème siècle').should.equal('17xx');
+      edtfy('IV siecle').should.equal('3xx');
     });
   });
 });
