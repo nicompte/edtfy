@@ -15,5 +15,7 @@ module.exports = {
   and: 'and',
   or: 'or',
   unknown: 'unknown|ukn',
-  open: 'open'
+  open: 'open',
+  // before: 'before',
+  after: 'after'
 };

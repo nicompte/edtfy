@@ -10,7 +10,8 @@
   "keywords": ["edtf", "date", "parser"],
   "main": "dist/edtfy.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "gulp build"
   },
   "author": "Nicolas Barbotte <nicolas@barbotte.net>",
   "license": "MIT",

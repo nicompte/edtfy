@@ -105,6 +105,8 @@ describe('EN - Level 1', function () {
     });
     it('should parse intervals with open dates', function() {
       edtfy('1988 - open').should.equal('1988/open');
+      edtfy('after 1988').should.equal('1988/open');
+      // edtfy('before 1988').should.equal('open/1988');
     });
     it('should parse various intervals', function() {
       edtfy('uu/1988 - around 2005').should.equal('1988-uu/2005~');

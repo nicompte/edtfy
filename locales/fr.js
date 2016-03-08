@@ -15,5 +15,7 @@ module.exports = {
   and: 'et',
   or: 'ou',
   unknown: 'inconnue?',
-  open: 'en cours'
+  open: 'en cours',
+  // before: 'avant',
+  after: 'apres'
 };

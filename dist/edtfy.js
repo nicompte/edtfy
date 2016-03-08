@@ -27,6 +27,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.or + '\\b', 'g'), 'O');
   string = string.replace(new RegExp('\\b' + localeData.unknown + '\\b', 'g'), 'U');
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
+  // string = string.replace(new RegExp('\\b' + localeData.before + '\\b', 'g'), 'OP -');
+  string = string.replace(new RegExp('\\b' + localeData.after + '\\b\\s*(.*)', 'g'), '$1 - OP');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
   return string;
 };
@@ -97,8 +99,11 @@ module.exports = {
   and: 'and',
   or: 'or',
   unknown: 'unknown|ukn',
-  open: 'open'
+  open: 'open',
+  // before: 'before',
+  after: 'after'
 };
+
 },{}],3:[function(_dereq_,module,exports){
 
 module.exports = {
@@ -117,8 +122,11 @@ module.exports = {
   and: 'et',
   or: 'ou',
   unknown: 'inconnue?',
-  open: 'en cours'
+  open: 'en cours',
+  // before: 'avant',
+  after: 'apres'
 };
+
 },{}],4:[function(_dereq_,module,exports){
 module.exports = (function() {
   "use strict";
