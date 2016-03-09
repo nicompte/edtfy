@@ -112,13 +112,15 @@ uu/25/1560 | 1560-uu-25
 
 #### 5.3.3 One of a Set
 
-The `..` feature is not supported for now.
+The `..` feature is only supported of `before` and `after` for now.
 
 input|output
 -----|------
 1667 or 1668 or 1670 | [1667,1668,1670]
 Jan 1760 or Feb 1760 or December 1760 | [1760-01,1760-02,1760-12]
 1667 or 12/1760 | [1667,1760-12]
+before 1930 | [..,1930]
+after march 2004 | [2004-03,..]
 
 #### 5.3.4 Multiple Dates
 
