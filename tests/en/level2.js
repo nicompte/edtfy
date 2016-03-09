@@ -33,6 +33,12 @@ describe('EN - Level 2', function () {
       edtfy('april 1 or 2 2015').should.equal('[2015-04-01,2015-04-02]');
       edtfy('spring or summer 2015').should.equal('[2015-21,2015-22]');
     });
+    it('should parse before and after dates', function() {
+      edtfy('after 1988').should.equal('[1988,..]');
+      edtfy('before 1988').should.equal('[..,1988]');
+      edtfy('after june 22nd 1987').should.equal('[1987-06-22,..]');
+      edtfy('before around april -3000').should.equal('[..,-3000-04~]');
+    });
   });
   describe('multiple dates: the parser', function() {
     it('should parse simple set', function() {

@@ -99,6 +99,12 @@ or
   / date1:complexdate date2:(' O ' d:complexdate { return d })+ {
       return '[' + date1 + ',' + date2 + ']'
     }
+  / BEFORE + date1:complexdate {
+      return '[..,' + date1 + ']'
+    }
+  / AFTER + date1:complexdate {
+      return '[' + date1 + ',..]'
+    }
 
 and
   = date1:day ' A ' date2:complexdate{
@@ -202,3 +208,5 @@ UNKNOWN_DAY = UNKNOWN / [0-3]
 UK = 'U' { return 'unknown' }
 OPEN = 'OP' { return 'open' }
 ROMAN = [ivxlcdm]
+BEFORE = 'BF '
+AFTER = 'AF '

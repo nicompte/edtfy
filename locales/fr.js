@@ -16,6 +16,6 @@ module.exports = {
   or: 'ou',
   unknown: 'inconnue?',
   open: 'en cours',
-  // before: 'avant|avt',
+  before: 'avant|avt',
   after: 'apres|apr'
 };
