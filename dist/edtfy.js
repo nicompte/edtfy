@@ -27,8 +27,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.or + '\\b', 'g'), 'O');
   string = string.replace(new RegExp('\\b' + localeData.unknown + '\\b', 'g'), 'U');
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
-  string = string.replace(new RegExp('\\b' + localeData.before + '\\b', 'g'), 'BF');
-  string = string.replace(new RegExp('\\b' + localeData.after + '\\b', 'g'), 'AF');
+  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
+  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
   return string;
 };
@@ -93,15 +93,15 @@ module.exports = {
   seasons: ['spring', 'summer', 'autumn|fall', 'winter'],
   century: 'century',
   format: ['mdy', 'dmy'],
-  around: 'around|about|abt|close to',
+  around: 'around|about|abt|close to|estimated|est',
   between1: 'between|bet|from',
   between2: 'to',
   and: 'and',
   or: 'or',
   unknown: 'unknown|ukn',
   open: 'open',
-  before: 'before|bef',
-  after: 'after|aft'
+  before: 'before|bef|bf|<',
+  after: 'after|aft|af|>'
 };
 
 },{}],3:[function(_dereq_,module,exports){
@@ -116,15 +116,15 @@ module.exports = {
   seasons: ['printemps', 'ete', 'automne', 'hiver'],
   century: 'siecle',
   format: ['dmy'],
-  around: 'vers|environ|env|autour de',
+  around: 'vers|environ|env|autour de|estime|estimee|est',
   between1: 'entre|du|de',
   between2: 'au|a',
   and: 'et',
   or: 'ou',
   unknown: 'inconnue?',
   open: 'en cours',
-  before: 'avant|avt',
-  after: 'apres|apr'
+  before: 'avant|avt|av|<',
+  after: 'apres|apr|ap|>'
 };
 
 },{}],4:[function(_dereq_,module,exports){

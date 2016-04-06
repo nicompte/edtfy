@@ -26,8 +26,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.or + '\\b', 'g'), 'O');
   string = string.replace(new RegExp('\\b' + localeData.unknown + '\\b', 'g'), 'U');
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
-  string = string.replace(new RegExp('\\b' + localeData.before + '\\b', 'g'), 'BF');
-  string = string.replace(new RegExp('\\b' + localeData.after + '\\b', 'g'), 'AF');
+  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
+  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
   return string;
 };

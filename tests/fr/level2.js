@@ -36,6 +36,10 @@ describe('FR - Level 2', function () {
     it('should parse before and after dates', function() {
       edtfy('après 1988').should.equal('[1988,..]');
       edtfy('avant 1988').should.equal('[..,1988]');
+      edtfy('av 1988').should.equal('[..,1988]');
+      edtfy('av. 1988').should.equal('[..,1988]');
+      edtfy('< 1988').should.equal('[..,1988]');
+      edtfy('> 1988').should.equal('[1988,..]');
       edtfy('après le 22 juin 1987').should.equal('[1987-06-22,..]');
       edtfy('avant environ avril -3000').should.equal('[..,-3000-04~]');
     });

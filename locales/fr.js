@@ -9,13 +9,13 @@ module.exports = {
   seasons: ['printemps', 'ete', 'automne', 'hiver'],
   century: 'siecle',
   format: ['dmy'],
-  around: 'vers|environ|env|autour de',
+  around: 'vers|environ|env|autour de|estime|estimee|est',
   between1: 'entre|du|de',
   between2: 'au|a',
   and: 'et',
   or: 'ou',
   unknown: 'inconnue?',
   open: 'en cours',
-  before: 'avant|avt',
-  after: 'apres|apr'
+  before: 'avant|avt|av|<',
+  after: 'apres|apr|ap|>'
 };
