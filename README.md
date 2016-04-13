@@ -1,5 +1,7 @@
 # edtfy (bring your own pronunciation)
 
+[![Circle CI](https://circleci.com/gh/nicompte/edtfy.svg?style=svg)](https://circleci.com/gh/nicompte/edtfy)
+
 edtfy is a parser that transforms user input into the [edtf](http://www.loc.gov/standards/datetime/pre-submission.html) format.
 
 ## Install
