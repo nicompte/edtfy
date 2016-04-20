@@ -32,16 +32,19 @@ describe('FR - Level 1', function () {
     it('should parse year approximate', function() {
       edtfy('environ 1988').should.equal('1988~');
       edtfy('vers 1988').should.equal('1988~');
+      edtfy('~ 1988').should.equal('1988~');
     });
     it('should parse season approximate', function() {
       edtfy('environ l\'hiver 1988').should.equal('1988-24~');
       edtfy('vers l\'automne 1988').should.equal('1988-23~');
+      edtfy('~ automne 1988').should.equal('1988-23~');
     });
     it('should parse month approximate', function() {
       edtfy('environ 03/1988').should.equal('1988-03~');
       edtfy('environ 3/1988').should.equal('1988-03~');
       edtfy('environ mars 1988').should.equal('1988-03~');
       edtfy('environ mar 1988').should.equal('1988-03~');
+      edtfy('~ mar 1988').should.equal('1988-03~');
     });
     it('should parse day approximate', function() {
       edtfy('environ 29/03/1988').should.equal('1988-03-29~');
@@ -50,20 +53,24 @@ describe('FR - Level 1', function () {
       edtfy('environ 29 mars 1988').should.equal('1988-03-29~');
       edtfy('environ le 29 mars 1988').should.equal('1988-03-29~');
       edtfy('environ 29 mar 1988').should.equal('1988-03-29~');
+      edtfy('~ 29 mar 1988').should.equal('1988-03-29~');
     });
     it('should parse year approximate and uncertain', function() {
       edtfy('environ 1988?').should.equal('1988?~');
       edtfy('vers 1988?').should.equal('1988?~');
+      edtfy('~ 1988?').should.equal('1988?~');
     });
     it('should parse season approximate and uncertain', function() {
       edtfy('environ l\'hiver 1988?').should.equal('1988-24?~');
       edtfy('vers l\'automne 1988?').should.equal('1988-23?~');
+      edtfy('~ automne 1988?').should.equal('1988-23?~');
     });
     it('should parse month approximate and uncertain', function() {
       edtfy('environ 03/1988?').should.equal('1988-03?~');
       edtfy('environ 3/1988?').should.equal('1988-03?~');
       edtfy('environ mars 1988?').should.equal('1988-03?~');
       edtfy('environ mar 1988?').should.equal('1988-03?~');
+      edtfy('~ mar 1988?').should.equal('1988-03?~');
     });
     it('should parse day approximate and uncertain', function() {
       edtfy('environ 29/03/1988?').should.equal('1988-03-29?~');
@@ -72,6 +79,7 @@ describe('FR - Level 1', function () {
       edtfy('environ 29 mars 1988?').should.equal('1988-03-29?~');
       edtfy('environ le 29 mars 1988?').should.equal('1988-03-29?~');
       edtfy('environ 29 mar 1988?').should.equal('1988-03-29?~');
+      edtfy('~ 29 mar 1988?').should.equal('1988-03-29?~');
     });
   });
   describe('unspecified: the parser', function() {

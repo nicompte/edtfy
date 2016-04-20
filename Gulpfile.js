@@ -3,7 +3,7 @@ var gulp = require('gulp');
 gulp.task('peg', function() {
   var peg = require('gulp-peg');
   gulp.src('edtfy.pegjs')
-    .pipe(peg({optimize: 'size'}))
+    .pipe(peg({optimize: 'speed', trace: false}))
     .pipe(gulp.dest('tmp'));
 });
 

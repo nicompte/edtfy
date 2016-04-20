@@ -59,15 +59,18 @@
 
 start
   = interval
-  / around
+  // around
   / or
   / and
   / complexdate
 
 around
-  = '~' ' '? d:complexdate {
+  = '~' ' '? d:complexdate_but_around {
       return d + '~'
     }
+  / d:complexdate_but_around ' '? '~' {
+    return d + '~'
+  }
 
 interval
   = 'B1 ' date1:complexdate (' B2 ' / ' A ') date2:(OPEN / complexdate) {
@@ -126,6 +129,10 @@ and
 complexdate
   = around
   / UK
+  / date_uncertain
+
+complexdate_but_around
+  = UK
   / date_uncertain
 
 date_uncertain
