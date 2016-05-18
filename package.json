@@ -5,15 +5,24 @@
   "homepage": "http://edtfy.barbotte.net",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nicompte/edtfy"
+    "url": "git+https://github.com/nicompte/edtfy.git"
   },
-  "keywords": ["edtf", "date", "parser"],
+  "keywords": [
+    "edtf",
+    "date",
+    "parser"
+  ],
   "main": "dist/edtfy.js",
   "scripts": {
     "test": "gulp test",
-    "build": "gulp build"
+    "build": "gulp build",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
   },
-  "author": "Nicolas Barbotte <nicolas@barbotte.net>",
+  "author": {
+    "name": "Nicolas Barbotte",
+    "email": "nicolas@barbotte.net"
+  },
   "license": "MIT",
   "devDependencies": {
     "browserify": "13.0.0",
@@ -25,7 +34,13 @@
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
+    "publish-please": "2.0.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/nicompte/edtfy/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "edtfy@0.0.6"
 }
