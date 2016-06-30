@@ -136,9 +136,17 @@ complexdate_but_around
   / date_uncertain
 
 date_uncertain
-  = d:date q:(' '? '?')? {
+  = d:date_negative q:(' '? '?')? {
     validateDate(d);
     d = q ? d + '?' : d;
+    return d;
+  }
+
+date_negative
+  = d:date ' NEG' {
+    return '-' + d;
+  }
+  / d:date {
     return d;
   }
 

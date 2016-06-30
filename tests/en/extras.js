@@ -19,4 +19,22 @@ describe('EN - extras', function () {
       edtfy('IIIrd century').should.equal('2xx');
     });
   });
+  describe('sign: the parser', function() {
+    it('should parse years with BC/AD suffixes', function() {
+      edtfy('2000BC').should.equal('-2000');
+      edtfy('2000AD').should.equal('2000');
+    });
+    it('should parse years with BCE/CE suffixes', function() {
+      edtfy('1000BCE').should.equal('-1000');
+      edtfy('1000CE').should.equal('1000');
+    });
+    it('should parse centuries with BC/AD suffixes', function() {
+      edtfy('2nd century BC').should.equal('-1xx');
+      edtfy('2nd century AD').should.equal('1xx');
+    });
+    it('should parse centuries with BCE/CE suffixes', function() {
+      edtfy('2nd century BCE').should.equal('-1xx');
+      edtfy('2nd century CE').should.equal('1xx');
+    });
+  });
 });

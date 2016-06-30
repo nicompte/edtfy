@@ -17,5 +17,7 @@ module.exports = {
   unknown: 'inconnue?',
   open: 'en cours',
   before: 'avant|avt|av|<',
-  after: 'apres|apr|ap|>'
+  after: 'apres|apr|ap|>',
+  negative: 'aec',
+  positive: 'ec'
 };

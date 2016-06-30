@@ -29,6 +29,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
   string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
+  string = string.replace(new RegExp(' *(' + localeData.negative + ')\\b', 'g'), ' NEG');
+  string = string.replace(new RegExp(' *(' + localeData.positive + ')\\b', 'g'), '');
   return string;
 };
 

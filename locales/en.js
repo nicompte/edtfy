@@ -17,5 +17,7 @@ module.exports = {
   unknown: 'unknown|ukn',
   open: 'open',
   before: 'before|bef|bf|<',
-  after: 'after|aft|af|>'
+  after: 'after|aft|af|>',
+  negative: 'bce|bc',
+  positive: 'ce|ad'
 };

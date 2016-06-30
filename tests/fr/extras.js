@@ -19,4 +19,14 @@ describe('FR - extras', function () {
       edtfy('IV siecle').should.equal('3xx');
     });
   });
+  describe('sign: the parser', function() {
+    it('should parse years with AEC/EC suffixes', function() {
+      edtfy('1000AEC.').should.equal('-1000');
+      edtfy('1000EC').should.equal('1000');
+    });
+    it('should parse centuries with AEC/EC suffixes', function() {
+      edtfy('19è siècle AEC').should.equal('-18xx');
+      edtfy('2 siecle EC').should.equal('1xx');
+    });
+  });
 });
