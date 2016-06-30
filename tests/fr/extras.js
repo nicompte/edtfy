@@ -10,13 +10,13 @@ describe('FR - extras', function () {
       edtfy('19è siècle').should.equal('18xx');
       // edtfy('19è').should.equal('18xx');
       edtfy('18ème siècle').should.equal('17xx');
-      edtfy('4 siecle').should.equal('3xx');
+      edtfy('4 siecle').should.equal('03xx');
     });
     it('should parse centuries with roman numbers', function() {
       edtfy('XIXè siècle').should.equal('18xx');
       // edtfy('XIXè').should.equal('18xx');
       edtfy('XVIIIème siècle').should.equal('17xx');
-      edtfy('IV siecle').should.equal('3xx');
+      edtfy('IV siecle').should.equal('03xx');
     });
   });
 });

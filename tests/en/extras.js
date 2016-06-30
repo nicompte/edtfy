@@ -10,13 +10,13 @@ describe('EN - extras', function () {
       edtfy('19th century').should.equal('18xx');
       // edtfy('19th').should.equal('18xx');
       edtfy('18 century').should.equal('17xx');
-      edtfy('3rd century').should.equal('2xx');
+      edtfy('3rd century').should.equal('02xx');
     });
     it('should parse centuries with roman numbers', function() {
       edtfy('XIXth century').should.equal('18xx');
       // edtfy('XIXth').should.equal('18xx');
       edtfy('XVIIIth century').should.equal('17xx');
-      edtfy('IIIrd century').should.equal('2xx');
+      edtfy('IIIrd century').should.equal('02xx');
     });
   });
 });
