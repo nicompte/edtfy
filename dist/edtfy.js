@@ -276,7 +276,11 @@ module.exports = (function() {
         },
         peg$c48 = function(d, u) {
          var a = d || [];
-         return a.concat(u).join('')
+         a = a.concat(u).join('');
+         if (a && a.length < 4) {
+          a = ("000000" + a).slice(-4);
+         }
+         return a;
         },
         peg$c49 = "M",
         peg$c50 = { type: "literal", value: "M", description: "\"M\"" },

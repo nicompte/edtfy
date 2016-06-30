@@ -205,7 +205,11 @@ year_bce = y:yeardigits ' BCE' {
 yeardigits
  = d:(DIGIT+ / !'/') u:(UNKNOWN* / !'/') {
  var a = d || [];
- return a.concat(u).join('')
+ a = a.concat(u).join('');
+ if (a && a.length < 4) {
+  a = ("000000" + a).slice(-4);
+ }
+ return a;
 }
 
 lettermonth = 'M' m:$(DIGIT DIGIT) { return m }
