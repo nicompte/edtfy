@@ -15,6 +15,7 @@ describe('FR - Level 2', function () {
       edtfy('uu/uu/19uu').should.equal('19uu-uu-uu');
       edtfy('uu/uu/uuuu').should.equal('uuuu-uu-uu');
       edtfy('u/u/uuuu').should.equal('uuuu-uu-uu');
+      edtfy('19u').should.equal('019u');
     });
   });
   describe('one of a set: the parser', function() {
