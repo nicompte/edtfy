@@ -15,6 +15,10 @@ describe('FR - Level 0', function () {
     it('should parse \'en YYYY\' dates', function() {
       edtfy('en 1988').should.equal('1988');
     });
+    it('should pad < 3 digit years', function() {
+      edtfy('10').should.equal('0010');
+      edtfy('10/10/10').should.equal('0010-10-10');
+    });
     it('should parse \'MM/YYYY\' dates', function() {
       edtfy('03/1988').should.equal('1988-03');
     });
