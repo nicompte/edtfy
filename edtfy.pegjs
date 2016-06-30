@@ -155,7 +155,9 @@ date
   / year
 
 date_bce
-  = century_bce
+  = c:century ' BCE' {
+    return c;
+  }
   / & { return options.format === 'mdy' } d:mdy_bce { return d; }
   / & { return options.format === 'dmy' } d:dmy_bce { return d; }
   / season_year_bce
@@ -218,20 +220,16 @@ season = 'S' s:$(DIGIT DIGIT) { return s }
 
 // TODO: Allow 20st
 century
-  = d:DIGIT+ ' C' { return parseInt(d.join(''), 10) - 1 + 'xx' }
-  / r:ROMAN+ ' C' { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
-  // d:DIGIT+ ""? { return parseInt(d.join(''), 10) - 1 + 'xx'}
-  // r:ROMAN+ ""? { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
-
-century_bce
-  = d:DIGIT+ ' C BCE' { 
+  = d:DIGIT+ ' C' { 
     var year = parseInt(d.join(''), 10) - 1 + 'xx';
     return ("000000" + year).slice(-4);
   }
-  / r:ROMAN+ ' C BCE' { 
+  / r:ROMAN+ ' C' { 
     var year = parseInt(deromanize(r.join('')), 10) - 1 + 'xx';
     return ("000000" + year).slice(-4);
   }
+  // d:DIGIT+ ""? { return parseInt(d.join(''), 10) - 1 + 'xx'}
+  // r:ROMAN+ ""? { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
 
 season_year = s:season ' '+ y:year { return y + '-' + s }
 
