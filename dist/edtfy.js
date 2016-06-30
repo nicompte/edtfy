@@ -274,8 +274,14 @@ module.exports = (function() {
         peg$c50 = function(s) { return s },
         peg$c51 = " C",
         peg$c52 = { type: "literal", value: " C", description: "\" C\"" },
-        peg$c53 = function(d) { return parseInt(d.join(''), 10) - 1 + 'xx' },
-        peg$c54 = function(r) { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' },
+        peg$c53 = function(d) { 
+            var year = parseInt(d.join(''), 10) - 1 + 'xx';
+            return ("000000" + year).slice(-4);
+          },
+        peg$c54 = function(r) { 
+            var year = parseInt(deromanize(r.join('')), 10) - 1 + 'xx';
+            return ("000000" + year).slice(-4);
+          },
         peg$c55 = function(s, y) { return y + '-' + s },
         peg$c56 = function(a, b) { return a + b;},
         peg$c57 = function(a, b) { return a + b; },
