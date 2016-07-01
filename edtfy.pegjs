@@ -178,7 +178,11 @@ year = s:'-'? y:yeardigits {
 yeardigits
  = d:(DIGIT+ / !'/') u:(UNKNOWN* / !'/') {
  var a = d || [];
- return a.concat(u).join('')
+ a = a.concat(u).join('');
+ if (a && a.length < 4) {
+  a = ("000000" + a).slice(-4);
+ }
+ return a;
 }
 
 lettermonth = 'M' m:$(DIGIT DIGIT) { return m }
@@ -187,8 +191,14 @@ season = 'S' s:$(DIGIT DIGIT) { return s }
 
 // TODO: Allow 20st
 century
-  = d:DIGIT+ ' C' { return parseInt(d.join(''), 10) - 1 + 'xx' }
-  / r:ROMAN+ ' C' { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
+  = d:DIGIT+ ' C' { 
+    var year = parseInt(d.join(''), 10) - 1 + 'xx';
+    return ("000000" + year).slice(-4);
+  }
+  / r:ROMAN+ ' C' { 
+    var year = parseInt(deromanize(r.join('')), 10) - 1 + 'xx';
+    return ("000000" + year).slice(-4);
+  }
   // d:DIGIT+ ""? { return parseInt(d.join(''), 10) - 1 + 'xx'}
   // r:ROMAN+ ""? { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
 

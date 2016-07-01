@@ -13,8 +13,9 @@ describe('EN - Level 2', function () {
       edtfy('0u/1u/19uu').should.equal('19uu-0u-1u');
       edtfy('uu/1u/19uu').should.equal('19uu-uu-1u');
       edtfy('uu/uu/19uu').should.equal('19uu-uu-uu');
-      edtfy('uu/uu/uu').should.equal('uu-uu-uu');
-      edtfy('u/u/uu').should.equal('uu-uu-uu');
+      edtfy('uu/uu/uuuu').should.equal('uuuu-uu-uu');
+      edtfy('u/u/uuuu').should.equal('uuuu-uu-uu');
+      edtfy('19u').should.equal('019u');
     });
   });
   describe('one of a set: the parser', function() {
