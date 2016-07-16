@@ -18,6 +18,6 @@ module.exports = {
   open: 'en cours',
   before: 'avant|avt|av|<',
   after: 'apres|apr|ap|>',
-  negative: 'aec',
-  positive: 'ec'
+  negative: 'avant jc|avt jc|aec',
+  positive: 'apres jc|ap jc|ec'
 };

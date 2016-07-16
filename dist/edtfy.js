@@ -27,11 +27,11 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.or + '\\b', 'g'), 'O');
   string = string.replace(new RegExp('\\b' + localeData.unknown + '\\b', 'g'), 'U');
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
+  string = string.replace(new RegExp(' ?(' + localeData.negative + ')\\b', 'g'), ' BCE');
+  string = string.replace(new RegExp(' ?(' + localeData.positive + ')\\b', 'g'), '');
   string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
   string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
-  string = string.replace(new RegExp(' *(' + localeData.negative + ')\\b', 'g'), ' BCE');
-  string = string.replace(new RegExp(' *(' + localeData.positive + ')\\b', 'g'), '');
   return string;
 };
 
@@ -58,6 +58,7 @@ module.exports = function(string, options) {
     string = i18n(string, localeData).trim()
     .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
     .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
+    console.log(string);
   var result;
   localeData.format.forEach(function(format, i) {
     try {
@@ -129,8 +130,8 @@ module.exports = {
   open: 'en cours',
   before: 'avant|avt|av|<',
   after: 'apres|apr|ap|>',
-  negative: 'aec',
-  positive: 'ec'
+  negative: 'avant jc|avt jc|aec',
+  positive: 'apres jc|ap jc|ec'
 };
 
 },{}],4:[function(_dereq_,module,exports){
