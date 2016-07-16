@@ -136,11 +136,15 @@ complexdate_but_around
   / date_uncertain
 
 date_uncertain
-  = d:date q:(' '? '?')? {
+  = d:date_unsigned q:(' '? '?')? {
     validateDate(d);
     d = q ? d + '?' : d;
     return d;
   }
+
+date_unsigned
+  = d:date_bce { return '-' + d; }
+  / d:date { return d; }
 
 date
   = century
@@ -150,11 +154,23 @@ date
   / my
   / year
 
+date_bce
+  = c:century ' BCE' {
+    return c;
+  }
+  / & { return options.format === 'mdy' } d:mdy_bce { return d; }
+  / & { return options.format === 'dmy' } d:dmy_bce { return d; }
+  / season_year_bce
+  / my_bce
+  / year_bce
+
 md = m:(lettermonth ' ' / month '/') d:day {
   return m[0] + '-' + d
 }
 
 mdy = md:md ('/' / ' ') y:year { return y + '-' + md }
+
+mdy_bce = md:md ('/' / ' ') y:year_bce { return y + '-' + md }
 
 dm = d:day m:(' ' lettermonth / '/' month ){
   return {d:d, m:m[1]}
@@ -162,9 +178,15 @@ dm = d:day m:(' ' lettermonth / '/' month ){
 
 dmy = d:day ('/' / ' ') my:my { return my + '-' + d }
 
+dmy_bce = d:day ('/' / ' ') my:my_bce { return my + '-' + d }
+
 my
   = m:lettermonth ' ' y:year { return y + '-' + m }
   / m:month '/' y:year { return y + '-' + m }
+
+my_bce
+  = m:lettermonth ' ' y:year_bce { return y + '-' + m }
+  / m:month '/' y:year_bce { return y + '-' + m }
 
 year = s:'-'? y:yeardigits {
   if(s){
@@ -174,6 +196,13 @@ year = s:'-'? y:yeardigits {
     y = 'y' + y
   }
   return y
+}
+year_bce = y:yeardigits ' BCE' {
+  var trailing = new RegExp('[0-9]+$').exec(y);
+  if (trailing) {
+    y = trailing - 1;
+  }
+  return ("000000" + y).slice(-4);
 }
 yeardigits
  = d:(DIGIT+ / !'/') u:(UNKNOWN* / !'/') {
@@ -203,6 +232,8 @@ century
   // r:ROMAN+ ""? { return parseInt(deromanize(r.join('')), 10) - 1 + 'xx' }
 
 season_year = s:season ' '+ y:year { return y + '-' + s }
+
+season_year_bce = s:season ' '+ y:year_bce { return y + '-' + s }
 
 month
   = (a:UNKNOWN_MONTH b:UNKNOWN { return a + b;} / a:UNKNOWN_MONTH b:DIGIT { return a + b; })

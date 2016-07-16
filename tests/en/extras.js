@@ -19,4 +19,24 @@ describe('EN - extras', function () {
       edtfy('IIIrd century').should.equal('02xx');
     });
   });
+  describe('sign: the parser', function() {
+    it('should parse centuries with era suffixes', function() {
+      edtfy('2nd century BC').should.equal('-01xx');
+      edtfy('2nd century AD').should.equal('01xx');
+      edtfy('2nd century BCE').should.equal('-01xx');
+      edtfy('2nd century CE').should.equal('01xx');
+    });
+    it('should parse years with era suffixes', function() {
+      edtfy('2000BC').should.equal('-1999');
+      edtfy('2000AD').should.equal('2000');
+      edtfy('1000BCE').should.equal('-0999');
+      edtfy('1000CE').should.equal('1000');
+    });
+    it('should parse full dates with era suffixes', function() {
+      edtfy('12th March 24BC').should.equal('-0023-03-12');
+      edtfy('Spring 4BCE').should.equal('-0003-21');
+      edtfy('Summer 12u BCE').should.equal('-012u-22');
+      edtfy('Summer 120 BCE').should.equal('-0119-22');
+    });
+  });
 });
