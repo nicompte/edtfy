@@ -19,4 +19,27 @@ describe('FR - extras', function () {
       edtfy('IV siecle').should.equal('03xx');
     });
   });
+  describe('sign: the parser', function() {
+    it('should parse centuries with era suffixes', function() {
+      edtfy('2nd siècle avant JC').should.equal('-01xx');
+      edtfy('2nd siècle AEC').should.equal('-01xx');
+      edtfy('2nd siècle après JC').should.equal('01xx');
+      edtfy('2nd siècle EC').should.equal('01xx');
+    });
+    it('should parse years with era suffixes', function() {
+      edtfy('2000 avant JC').should.equal('-1999');
+      edtfy('2000AEC').should.equal('-1999');
+      edtfy('2000EC').should.equal('2000');
+    });
+    it('should parse full dates with era suffixes', function() {
+      edtfy('12 mars 24 avant JC').should.equal('-0023-03-12');
+      edtfy('12 mars 24 AEC').should.equal('-0023-03-12');
+      edtfy('printemps 4 avant JC').should.equal('-0003-21');
+      edtfy('printemps 4AEC').should.equal('-0003-21');
+      edtfy('ete 12u avt JC').should.equal('-012u-22');
+      edtfy('ete 12u AEC').should.equal('-012u-22');
+      edtfy('ete 120 avt JC').should.equal('-0119-22');
+      edtfy('ete 120 AEC').should.equal('-0119-22');
+    });
+  });
 });
