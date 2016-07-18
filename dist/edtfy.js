@@ -43,6 +43,7 @@ module.exports = function(string, options) {
     .toLowerCase()
     .replace(/[,.]/g, ' ')
     .replace(/ +/g, ' ')
+    // fr
     .replace(/[àáâãäå]/g,"a")
     .replace(/ç/g,"c")
     .replace(/[èéêë]/g,"e")
@@ -52,13 +53,15 @@ module.exports = function(string, options) {
     .replace(/[ýÿ]/g,"y")
     .replace(/\ble\b/g, '').replace(/\ben\b\s*(\d)/g, '$1').replace(/\bl'\b/g, '').replace(/\bl'an\b/g, '')
     .replace(/(\d+)\s?eme\b/g, '$1').replace(/(\d+)\s?er\b/g, '$1').replace(/(\d+)\s?e\b/g, '$1')
+    // en
     .replace(/\bthe\b/g, '').replace(/\bin\b/g, '')
     .replace(/(\d+)\s?st\b/g, '$1').replace(/(\d+)\s?nd\b/g, '$1').replace(/(\d+)\s?rd\b/g, '$1').replace(/(\d+)\s?th\b/g, '$1')
     .replace(/ +/g, ' ');
     string = i18n(string, localeData).trim()
+    // fr
     .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
+    // en
     .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
-  string = localeData.cleanup(string);
   var result;
   // we need this one because of > and < in '< 1988' and '<1988'
   string = string.replace(/ +/g, ' ');
@@ -108,10 +111,7 @@ module.exports = {
   before: 'before|bef|bf|<',
   after: 'after|aft|af|>',
   negative: 'bce|bc',
-  positive: 'ce|ad',
-  cleanup: function (string) {
-    return string;
-  }
+  positive: 'ce|ad'
 };
 
 },{}],3:[function(_dereq_,module,exports){
@@ -136,16 +136,7 @@ module.exports = {
   before: 'avant|avt|av|<',
   after: 'apres|apr|ap|>',
   negative: 'avant jc|avt jc|aec',
-  positive: 'apres jc|ap jc|ec',
-  cleanup: function(string) {
-    return string
-    .replace(/[àáâä]/g,"a")
-    .replace(/ç/g,"c")
-    .replace(/[èéêë]/g,"e")
-    .replace(/[îï]/g,"i")
-    .replace(/[ôö]/g,"o")
-    .replace(/[ùûü]/g,"u");
-  }
+  positive: 'apres jc|ap jc|ec'
 };
 
 },{}],4:[function(_dereq_,module,exports){
