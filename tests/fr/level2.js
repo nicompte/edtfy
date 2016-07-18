@@ -36,6 +36,8 @@ describe('FR - Level 2', function () {
     });
     it('should parse before and after dates', function() {
       edtfy('après 1988').should.equal('[1988,..]');
+      edtfy('ap 1988').should.equal('[1988,..]');
+      edtfy('ap. 1988').should.equal('[1988,..]');
       edtfy('avant 1988').should.equal('[..,1988]');
       edtfy('av 1988').should.equal('[..,1988]');
       edtfy('av. 1988').should.equal('[..,1988]');

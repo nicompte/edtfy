@@ -32,6 +32,9 @@ describe('FR - Level 1', function () {
     it('should parse year approximate', function() {
       edtfy('environ 1988').should.equal('1988~');
       edtfy('vers 1988').should.equal('1988~');
+      edtfy('circa 1988').should.equal('1988~');
+      edtfy('ca 1988').should.equal('1988~');
+      edtfy('c. 1988').should.equal('1988~');
       edtfy('~ 1988').should.equal('1988~');
     });
     it('should parse season approximate', function() {
