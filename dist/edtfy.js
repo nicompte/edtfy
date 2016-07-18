@@ -29,8 +29,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
   string = string.replace(new RegExp(' ?(' + localeData.negative + ')\\b', 'g'), ' BCE');
   string = string.replace(new RegExp(' ?(' + localeData.positive + ')\\b', 'g'), '');
-  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
-  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
+  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF ');
+  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF ');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
   return string;
 };
@@ -41,8 +41,8 @@ module.exports = function(string, options) {
   var localeData = options.locale === 'en' ? en : fr;
   string = string.trim()
     .toLowerCase()
+    .replace(/[,.]/g, ' ')
     .replace(/ +/g, ' ')
-    .replace(/[,.]/g, '')
     .replace(/[àáâãäå]/g,"a")
     .replace(/ç/g,"c")
     .replace(/[èéêë]/g,"e")
@@ -58,7 +58,10 @@ module.exports = function(string, options) {
     string = i18n(string, localeData).trim()
     .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
     .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
+  string = localeData.cleanup(string);
   var result;
+  // we need this one because of > and < in '< 1988' and '<1988'
+  string = string.replace(/ +/g, ' ');
   localeData.format.forEach(function(format, i) {
     try {
       if (!result) {
@@ -95,7 +98,7 @@ module.exports = {
   seasons: ['spring', 'summer', 'autumn|fall', 'winter'],
   century: 'century',
   format: ['mdy', 'dmy'],
-  around: 'around|about|abt|close to|estimated|est|circa|ca|\\bc\\b',
+  around: 'around|about|abt|close to|estimated|est|circa|ca|cc|\\bc\\b',
   between1: 'between|bet|from',
   between2: 'to',
   and: 'and',
@@ -105,7 +108,10 @@ module.exports = {
   before: 'before|bef|bf|<',
   after: 'after|aft|af|>',
   negative: 'bce|bc',
-  positive: 'ce|ad'
+  positive: 'ce|ad',
+  cleanup: function (string) {
+    return string;
+  }
 };
 
 },{}],3:[function(_dereq_,module,exports){
@@ -120,7 +126,7 @@ module.exports = {
   seasons: ['printemps', 'ete', 'automne', 'hiver'],
   century: 'siecle',
   format: ['dmy'],
-  around: 'vers|environ|env|autour de|estime|estimee|est|circa|ca|\\bc\\b',
+  around: 'vers|environ|env|autour de|estime|estimee|est|circa|ca|cc|\\bc\\b',
   between1: 'entre|du|de',
   between2: 'au|a',
   and: 'et',
@@ -130,7 +136,16 @@ module.exports = {
   before: 'avant|avt|av|<',
   after: 'apres|apr|ap|>',
   negative: 'avant jc|avt jc|aec',
-  positive: 'apres jc|ap jc|ec'
+  positive: 'apres jc|ap jc|ec',
+  cleanup: function(string) {
+    return string
+    .replace(/[àáâä]/g,"a")
+    .replace(/ç/g,"c")
+    .replace(/[èéêë]/g,"e")
+    .replace(/[îï]/g,"i")
+    .replace(/[ôö]/g,"o")
+    .replace(/[ùûü]/g,"u");
+  }
 };
 
 },{}],4:[function(_dereq_,module,exports){

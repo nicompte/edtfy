@@ -28,8 +28,8 @@ var i18n = function(string, localeData) {
   string = string.replace(new RegExp('\\b' + localeData.open + '\\b', 'g'), 'OP');
   string = string.replace(new RegExp(' ?(' + localeData.negative + ')\\b', 'g'), ' BCE');
   string = string.replace(new RegExp(' ?(' + localeData.positive + ')\\b', 'g'), '');
-  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF');
-  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF');
+  string = string.replace(new RegExp('\\b' + localeData.before, 'g'), 'BF ');
+  string = string.replace(new RegExp('\\b' + localeData.after, 'g'), 'AF ');
   string = string.replace(new RegExp('\\b' + localeData.days + '\\b', 'g'), '');
   return string;
 };
@@ -40,8 +40,9 @@ module.exports = function(string, options) {
   var localeData = options.locale === 'en' ? en : fr;
   string = string.trim()
     .toLowerCase()
+    .replace(/[,.]/g, ' ')
     .replace(/ +/g, ' ')
-    .replace(/[,.]/g, '')
+    // fr
     .replace(/[àáâãäå]/g,"a")
     .replace(/ç/g,"c")
     .replace(/[èéêë]/g,"e")
@@ -51,13 +52,18 @@ module.exports = function(string, options) {
     .replace(/[ýÿ]/g,"y")
     .replace(/\ble\b/g, '').replace(/\ben\b\s*(\d)/g, '$1').replace(/\bl'\b/g, '').replace(/\bl'an\b/g, '')
     .replace(/(\d+)\s?eme\b/g, '$1').replace(/(\d+)\s?er\b/g, '$1').replace(/(\d+)\s?e\b/g, '$1')
+    // en
     .replace(/\bthe\b/g, '').replace(/\bin\b/g, '')
     .replace(/(\d+)\s?st\b/g, '$1').replace(/(\d+)\s?nd\b/g, '$1').replace(/(\d+)\s?rd\b/g, '$1').replace(/(\d+)\s?th\b/g, '$1')
     .replace(/ +/g, ' ');
     string = i18n(string, localeData).trim()
+    // fr
     .replace(/([ivxlcdm]+)\s?eme C/g, '$1 C').replace(/([ivxlcdm]+)\s?er C/g, '$1 C').replace(/([ivxlcdm]+)\s?e C/g, '$1 C')
+    // en
     .replace(/([ivxlcdm]+)\s?st C/g, '$1 C').replace(/([ivxlcdm]+)\s?nd C/g, '$1 C').replace(/([ivxlcdm]+)\s?rd C/g, '$1 C').replace(/([ivxlcdm]+)\s?th C/g, '$1 C');
   var result;
+  // we need this one because of > and < in '< 1988' and '<1988'
+  string = string.replace(/ +/g, ' ');
   localeData.format.forEach(function(format, i) {
     try {
       if (!result) {

@@ -42,7 +42,9 @@ describe('EN - Level 2', function () {
       edtfy('af 1988').should.equal('[1988,..]');
       edtfy('af. 1988').should.equal('[1988,..]');
       edtfy('< 1988').should.equal('[..,1988]');
+      edtfy('<1988').should.equal('[..,1988]');
       edtfy('> 1988').should.equal('[1988,..]');
+      edtfy('>1988').should.equal('[1988,..]');
       edtfy('after june 22nd 1987').should.equal('[1987-06-22,..]');
       edtfy('before around april -3000').should.equal('[..,-3000-04~]');
     });

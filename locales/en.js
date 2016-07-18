@@ -9,7 +9,7 @@ module.exports = {
   seasons: ['spring', 'summer', 'autumn|fall', 'winter'],
   century: 'century',
   format: ['mdy', 'dmy'],
-  around: 'around|about|abt|close to|estimated|est|circa|ca|\\bc\\b',
+  around: 'around|about|abt|close to|estimated|est|circa|ca|cc|\\bc\\b',
   between1: 'between|bet|from',
   between2: 'to',
   and: 'and',
