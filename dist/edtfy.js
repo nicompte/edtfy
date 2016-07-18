@@ -43,6 +43,7 @@ module.exports = function(string, options) {
     .toLowerCase()
     .replace(/[,.]/g, ' ')
     .replace(/ +/g, ' ')
+    .replace(/–/g, '-')
     // fr
     .replace(/[àáâãäå]/g,"a")
     .replace(/ç/g,"c")

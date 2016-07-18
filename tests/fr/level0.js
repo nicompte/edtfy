@@ -175,6 +175,10 @@ describe('FR - Level 0', function () {
       edtfy('1 mars 1988 - 2/03/1988').should.equal('1988-03-01/1988-03-02');
       edtfy('1 mars 1988 - 2/3/1988').should.equal('1988-03-01/1988-03-02');
     });
+    it('should also support dashes', function() {
+      edtfy('2003–2005').should.equal('2003/2005');
+      edtfy('2003 – 2005').should.equal('2003/2005');
+    });
     // Various
     it('should parse various combinations', function () {
       edtfy('de sep 1988 au 30/04/1988').should.equal('1988-09/1988-04-30');
