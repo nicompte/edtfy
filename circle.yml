@@ -1,6 +1,8 @@
 machine:
   node:
     version: 6
+  environment:
+    NODE_ENV: development
 
 dependencies:
   pre:
