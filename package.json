@@ -31,7 +31,7 @@
     "gulp": "3.9.1",
     "gulp-mocha": "2.2.0",
     "gulp-peg": "git://github.com/nicompte/gulp-peg.git#master",
-    "gulp-rename": "1.2.2",
+    "gulp-rename": "1.4.0",
     "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "1.5.4",
     "publish-please": "2.1.4",
