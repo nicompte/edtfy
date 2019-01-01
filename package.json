@@ -28,7 +28,7 @@
     "browserify": "13.0.1",
     "browserify-derequire": "^0.9.4",
     "chai": "3.5.0",
-    "gulp": "3.9.1",
+    "gulp": "4.0.0",
     "gulp-mocha": "2.2.0",
     "gulp-peg": "git://github.com/nicompte/gulp-peg.git#master",
     "gulp-rename": "1.2.2",
