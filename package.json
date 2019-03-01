@@ -17,7 +17,8 @@
     "test": "gulp test",
     "build": "gulp build",
     "publish-please": "publish-please",
-    "prepublish": "publish-please guard"
+    "prepublish": "publish-please guard",
+    "bundlesize": "bundlesize"
   },
   "author": {
     "name": "Nicolas Barbotte",
@@ -25,21 +26,26 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "browserify": "13.0.1",
-    "browserify-derequire": "^0.9.4",
-    "chai": "3.5.0",
-    "gulp": "3.9.1",
-    "gulp-mocha": "2.2.0",
+    "browserify": "^16.2.3",
+    "browserify-derequire": "^1.0.0",
+    "bundlesize": "^0.17.1",
+    "chai": "^4.2.0",
+    "gulp": "^4.0.0",
+    "gulp-mocha": "6.0.0",
     "gulp-peg": "git://github.com/nicompte/gulp-peg.git#master",
-    "gulp-rename": "1.2.2",
-    "gulp-sourcemaps": "1.6.0",
-    "gulp-uglify": "1.5.4",
-    "publish-please": "2.1.4",
-    "vinyl-buffer": "1.0.0",
-    "vinyl-source-stream": "1.1.0"
+    "gulp-rename": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.1",
+    "publish-please": "^5.4.3",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   },
   "bugs": {
     "url": "https://github.com/nicompte/edtfy/issues"
   },
-  "_id": "edtfy@0.0.6"
+  "_id": "edtfy@0.0.6",
+  "bundlesize": [{
+    "path": "./dist/edtfy.min.js",
+    "maxSize": "6 kB"
+  }]
 }
