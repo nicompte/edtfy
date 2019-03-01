@@ -6,5 +6,5 @@ machine:
 
 test:
   override:
-    - yarn run build
+    - yarn build
     - yarn test
