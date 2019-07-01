@@ -3736,9 +3736,9 @@ public-encrypt@^4.0.0:
     safe-buffer "^5.1.2"
 
 publish-please@^5.4.3:
-  version "5.4.3"
-  resolved "https://registry.yarnpkg.com/publish-please/-/publish-please-5.4.3.tgz#1211bb643eee0600f98e06f803b9cbb15250efc6"
-  integrity sha512-mcRkIXB5TLlR4iKnQHjH+TsqpFW8v1EIC9cYgifv+3Hfi5uoa+23j3fmpfhjXgW1XXyYOYvSO6DWHvPdH0LCdg==
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/publish-please/-/publish-please-5.5.0.tgz#d0babfc43e7807cb0df576bf62cedc1c2d1f1272"
+  integrity sha512-mfZHCvOvMpcFPIBlBO2tR0n2IDEKDhPEz0YipEpSazWKcAlVj2l1L09hkcuaypd+SD+zV5lJv4pDFMOPMeQ1dw==
   dependencies:
     chalk "2.4.1"
     cp-sugar "1.0.0"
