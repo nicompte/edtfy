@@ -31,7 +31,7 @@
     "bundlesize": "^0.17.1",
     "chai": "^4.2.0",
     "gulp": "^4.0.0",
-    "gulp-mocha": "^6.0.0",
+    "gulp-mocha": "^7.0.1",
     "gulp-peg": "git://github.com/nicompte/gulp-peg.git#master",
     "gulp-rename": "^1.4.0",
     "gulp-sourcemaps": "^2.6.5",
