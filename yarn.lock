@@ -509,12 +509,12 @@ browserify-cipher@^1.0.0:
     evp_bytestokey "^1.0.0"
 
 browserify-derequire@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/browserify-derequire/-/browserify-derequire-1.0.0.tgz#6ce6d08c1c8c37abfd2784b75097f6f539a101ff"
-  integrity sha512-7V/HFPqA95qx+Duw6K8IStMlImetmhA57fkKh5SBD1nCdIOWYEAdxZwwlR2SL9642Eggr8Tixx8foN9Kf6nmUA==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/browserify-derequire/-/browserify-derequire-1.0.1.tgz#6c7cdb228ccf21226e9a1d203a16be9da5afd253"
+  integrity sha512-UYKzp7fjiwq2+zj4IgS9lLUhNIdO3I4k+xEAAs5a6i3aQC3E+3gMYq9bDfyckojxNKCPnWxFWjJS4gGcxTXhUw==
   dependencies:
     derequire "2.0.6"
-    through2 "3.0.0"
+    through2 "3.0.1"
 
 browserify-des@^1.0.0:
   version "1.0.2"
@@ -4573,15 +4573,7 @@ through2@2.X, through2@^2.0.0, through2@^2.0.3, through2@~2.0.0:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
-through2@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.0.tgz#468b461df9cd9fcc170f22ebf6852e467e578ff2"
-  integrity sha512-8B+sevlqP4OiCjonI1Zw03Sf8PuV1eRsYQgLad5eonILOdyeRsY27A/2Ze8IlvlMvq31OH+3fz/styI7Ya62yQ==
-  dependencies:
-    readable-stream "2 || 3"
-    xtend "~4.0.1"
-
-through2@^3.0.1:
+through2@3.0.1, through2@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/through2/-/through2-3.0.1.tgz#39276e713c3302edf9e388dd9c812dd3b825bd5a"
   integrity sha512-M96dvTalPT3YbYLaKaCuwu+j06D/8Jfib0o/PxbVt6Amhv3dUAtW6rTV1jPgJSBG83I/e04Y6xkVdVhSRhi0ww==
